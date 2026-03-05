@@ -1,0 +1,12 @@
+// verifica se LOGIN e senha
+// corresponde ao mesmo tempo  (&&)
+
+const login = 'superman'
+const senha = 's123'
+
+if (login == "superman" && senha == 'segredo123' ) {
+    console.log("login correto!!")
+}
+else {
+    console.log("senha incorreta!!")
+}
