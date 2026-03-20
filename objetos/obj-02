@@ -1,0 +1,23 @@
+// escolher um tema
+// criar um objet0 (a sua escolha)
+// deve ter 5 propriedadesno minimo
+// imprima como nos exemplos...
+// ex: console.log("tipo de carne:" + carne.tipo)
+
+const felino = {
+    tipo:"pantera-negra",
+    nome:"T'Challa",
+    idade:"34 anos",
+    ondeMora :"Wakanda",
+    legado:"rei guerreiro de Wakanda",
+    habilidades:"Ele ganha força, agilidade e sentidos sobre-humanos ao ingerir a Erva Coração e utiliza um traje feito de Vibranium",
+}
+    const detalhesFelino="Nome: "+felino.nome + " Idade" +felino.idade + "ondemora" +felino.ondeMora + "legado" +felino.legado + "habilidades" +felino.habilidades
+    console.log()
+    console.log()
+    console.log()
+    console.log()
+    console.log()
+    console.log()
+
+    
