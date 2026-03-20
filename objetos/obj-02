@@ -12,12 +12,8 @@ const felino = {
     legado:"rei guerreiro de Wakanda",
     habilidades:"Ele ganha força, agilidade e sentidos sobre-humanos ao ingerir a Erva Coração e utiliza um traje feito de Vibranium",
 }
-    const detalhesFelino="Nome: "+felino.nome + " Idade" +felino.idade + "ondemora" +felino.ondeMora + "legado" +felino.legado + "habilidades" +felino.habilidades
-    console.log()
-    console.log()
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    const detalhesFelino="Nome: "+felino.nome + "\nIdade: " +felino.idade + "\nondemora: " +felino.ondeMora + "\nlegado: " +felino.legado + "\nhabilidades: " +felino.habilidades
+    console.log(detalhesFelino)
+ 
 
     
