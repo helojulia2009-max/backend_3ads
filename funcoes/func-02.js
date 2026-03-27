@@ -10,7 +10,7 @@ function divisao(n1, n2) {
         console.error("impossivel dividir por ZERO!!")
     }
 }
-divisao(12, 2)
+divisao(12, 7)
 
 function adição(n1, n2) {
     console.log("a adição de " + n1 + " por " + n2 + " é = " + (n1 + n2))
@@ -25,5 +25,5 @@ subtração(30, 12)
 function multiplicação(n1, n2) {
     console.log("a multiplicação de " + n1 + " por " + n2 + " é = " + (n1 * n2))
 }
-multiplicação(25, 10)
+multiplicação(25, 14)
 
