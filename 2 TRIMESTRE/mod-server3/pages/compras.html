@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras de Roupas</title>
+    
+    <style>
+        /* Variáveis de cores mantendo o padrão das outras páginas */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary-blue: #2563eb;
+            --primary-blue-hover: #1d4ed8;
+            --secondary-bg: #334155;
+            --secondary-bg-hover: #475569;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Container de Produtos (Grid Responsivo) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Card do Produto */
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Placeholder de Imagem do Produto */
+        .product-image {
+            width: 100%;
+            height: 160px;
+            background-color: var(--secondary-bg);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 2.5rem;
+            border: 2px dashed #64748b;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-blue-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-bg);
+            color: #f1f5f9;
+            width: auto;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-bg-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="title">Página de Compras</h1>
+        <p class="subtitle">Bem-vindo(a) à nossa loja de roupas!</p>
+    </header>
+
+    <main class="products-grid">
+        
+        <article class="product-card">
+            <div class="product-image" aria-label="Imagem da Camiseta">👕</div>
+            <h2 class="product-name">Camiseta Basic</h2>
+            <p class="product-price">R$ 79,90</p>
+            <button class="btn btn-primary">
+                <span aria-hidden="true">🛒</span> Comprar
+            </button>
+        </article>
+
+        <article class="product-card">
+            <div class="product-image" aria-label="Imagem da Calça Jeans">👖</div>
+            <h2 class="product-name">Calça Jeans</h2>
+            <p class="product-price">R$ 159,90</p>
+            <button class="btn btn-primary">
+                <span aria-hidden="true">🛒</span> Comprar
+            </button>
+        </article>
+
+        <article class="product-card">
+            <div class="product-image" aria-label="Imagem do Casaco">🧥</div>
+            <h2 class="product-name">Casaco Moletom</h2>
+            <p class="product-price">R$ 199,90</p>
+            <button class="btn btn-primary">
+                <span aria-hidden="true">🛒</span> Comprar
+            </button>
+        </article>
+
+    </main>
+
+    <a href="/" class="btn btn-secondary">
+        <span aria-hidden="true">⬅️</span> Voltar para a Página Inicial
+    </a>
+
+</body>
+</html>
