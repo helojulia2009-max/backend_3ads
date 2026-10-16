@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CinePlay | Filmes e Séries</title>
+
+    <link rel="stylesheet" href="../../estilos/filmes.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <a href="/" class="logo">CINEPLAY</a>
+
+        <nav class="menu">
+            <a href="/">Início</a>
+            <a href="/filmes" class="ativo">Filmes e Séries</a>
+            <a href="/avaliacoes">Avaliações</a>
+            <a href="/sobre">Sobre nós</a>
+        </nav>
+    </header>
+
+    <!-- APRESENTAÇÃO -->
+    <section class="banner-catalogo">
+        <div class="banner-conteudo">
+            <span class="etiqueta">EXPLORE O CINEPLAY</span>
+
+            <h1>Seu próximo filme favorito está aqui.</h1>
+
+            <p>
+                Explore histórias incríveis, descubra novos títulos
+                e veja as opiniões de outros apaixonados por cinema.
+            </p>
+        </div>
+    </section>
+
+    <main class="conteudo">
+
+        <!-- PESQUISA -->
+        <section class="pesquisa-area">
+            <h2>Encontre um filme</h2>
+
+            <input
+                type="search"
+                id="pesquisa"
+                placeholder="Digite o nome de um filme..."
+                aria-label="Pesquisar filmes"
+            >
+
+            <p id="contador" aria-live="polite">
+                Explore nosso catálogo de filmes.
+            </p>
+        </section>
+
+        <!-- FILTROS -->
+        <section class="catalogo">
+            <h2>Todos os filmes</h2>
+
+            <div class="filtros">
+                <button class="filtro ativo" data-genero="todos">
+                    Todos
+                </button>
+
+                <button class="filtro" data-genero="acao">
+                    Ação
+                </button>
+
+                <button class="filtro" data-genero="ficcao">
+                    Ficção científica
+                </button>
+
+                <button class="filtro" data-genero="aventura">
+                    Aventura
+                </button>
+
+                <button class="filtro" data-genero="drama">
+                    Drama
+                </button>
+
+                <button class="filtro" data-genero="animacao">
+                    Animação
+                </button>
+            </div>
+
+            <!-- LISTA DE FILMES -->
+            <div class="grade-filmes" id="gradeFilmes">
+
+                <article class="filme" data-genero="ficcao"
+                    data-titulo="interestelar">
+                    <img
+                        src="../../imagens/imagem01.jpg"
+                        alt="Pôster do filme Interestelar"
+                        loading="lazy">
+
+                    <div class="filme-info">
+                        <span class="genero">Ficção científica</span>
+                        <h3>Interestelar</h3>
+                        <p class="detalhes">2014 • Ficção científica</p>
+                        <p class="sinopse">
+                            Uma equipe parte em uma missão espacial
+                            em busca de um futuro para a humanidade.
+                        </p>
+                        <p class="nota">★ 9,3/10</p>
+
+                        <a href="/avaliacoes" class="botao">
+                            Ver avaliações
+                        </a>
+                    </div>
+                </article>
+
+                <article class="filme" data-genero="ficcao"
+                    data-titulo="a origem">
+                    <img
+                        src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
+                        alt="Pôster do filme A Origem"
+                        loading="lazy">
+
+                    <div class="filme-info">
+                        <span class="genero">Ficção científica</span>
+                        <h3>A Origem</h3>
+                        <p class="detalhes">2010 • Ação</p>
+                        <p class="sinopse">
+                            Um especialista em sonhos recebe uma missão
+                            que desafia a realidade.
+                        </p>
+                        <p class="nota">★ 8,8/10</p>
+
+                        <a href="/avaliacoes" class="botao">
+                            Ver avaliações
+                        </a>
+                    </div>
+                </article>
+
+                <article class="filme" data-genero="acao"
+                    data-titulo="batman">
+                    <img
+                        src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg"
+                        alt="Pôster do filme Batman"
+                        loading="lazy">
+
+                    <div class="filme-info">
+                        <span class="genero">Ação</span>
+                        <h3>Batman</h3>
+                        <p class="detalhes">2022 • Ação e suspense</p>
+                        <p class="sinopse">
+                            O herói investiga crimes e enfrenta
+                            uma ameaça que assusta Gotham City.
+                        </p>
+                        <p class="nota">★ 7,8/10</p>
+
+                        <a href="/avaliacoes" class="botao">
+                            Ver avaliações
+                        </a>
+                    </div>
+                </article>
+
+                <article class="filme" data-genero="aventura"
+                    data-titulo="jurassic world">
+                    <img
+                        src="https://image.tmdb.org/t/p/w500/A0LZHXUzo5C60Oahvt7VxvwuzHw.jpg"
+                        alt="Pôster de Jurassic World"
+                        loading="lazy">
+
+                    <div class="filme-info">
+                        <span class="genero">Aventura</span>
+                        <h3>Jurassic World</h3>
+                        <p class="detalhes">2015 • Aventura</p>
+                        <p class="sinopse">
+                            Um parque de dinossauros enfrenta
+                            uma situação fora de controle.
+                        </p>
+                        <p class="nota">★ 7,0/10</p>
+
+                        <a href="/avaliacoes" class="botao">
+                            Ver avaliações
+                        </a>
+                    </div>
+                </article>
+
+                <article class="filme" data-genero="drama"
+                    data-titulo="a procura da felicidade">
+                    <img
+                        src="../../imagens/imagem07.jpeg"
+                        alt="Pôster de À Procura da Felicidade"
+                        loading="lazy">
+
+                    <div class="filme-info">
+                        <span class="genero">Drama</span>
+                        <h3>À Procura da Felicidade</h3>
+                        <p class="detalhes">2006 • Drama</p>
+                        <p class="sinopse">
+                            Um pai enfrenta dificuldades enquanto
+                            luta para construir uma vida melhor.
+                        </p>
+                        <p class="nota">★ 8,0/10</p>
+
+                        <a href="/avaliacoes" class="botao">
+                            Ver avaliações
+                        </a>
+                    </div>
+                </article>
+
+                <article class="filme" data-genero="animacao"
+                    data-titulo="divertida mente">
+                    <img
+                        src="https://image.tmdb.org/t/p/w500/2H1TmgdfNtsKlU9jKdeNyYL5y8T.jpg"
+                        alt="Pôster de Divertida Mente"
+                        loading="lazy">
+
+                    <div class="filme-info">
+                        <span class="genero">Animação</span>
+                        <h3>Divertida Mente</h3>
+                        <p class="detalhes">2015 • Animação</p>
+                        <p class="sinopse">
+                            As emoções de uma menina tentam ajudá-la
+                            a enfrentar mudanças em sua vida.
+                        </p>
+                        <p class="nota">★ 8,1/10</p>
+
+                        <a href="/avaliacoes" class="botao">
+                            Ver avaliações
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <p id="semResultados" class="sem-resultados" hidden>
+                Nenhum filme encontrado. Tente outro título ou gênero.
+            </p>
+        </section>
+
+        <!-- CHAMADA PARA AVALIAÇÕES -->
+        <section class="chamada-avaliacoes">
+            <div>
+                <h2>Você já assistiu a algum desses filmes?</h2>
+                <p>
+                    Compartilhe sua opinião e ajude outras pessoas
+                    a escolherem o que assistir.
+                </p>
+            </div>
+
+            <a href="/avaliacoes" class="botao botao-grande">
+                Avaliar filmes
+            </a>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <p>© 2026 CinePlay — Projeto acadêmico.</p>
+
+        <div>
+            <a href="/">Início</a>
+            <a href="/filmes">Filmes</a>
+            <a href="/avaliacoes">Avaliações</a>
+            <a href="/sobre">Sobre nós</a>
+        </div>
+    </footer>
+
+    <!-- PESQUISA E FILTROS -->
+    <script>
+        const pesquisa = document.getElementById("pesquisa");
+        const filmes = document.querySelectorAll(".filme");
+        const filtros = document.querySelectorAll(".filtro");
+        const contador = document.getElementById("contador");
+        const semResultados = document.getElementById("semResultados");
+
+        let generoAtual = "todos";
+
+        function filtrarFilmes() {
+            const termo = pesquisa.value
+                .trim()
+                .toLocaleLowerCase("pt-BR");
+
+            let quantidade = 0;
+
+            filmes.forEach((filme) => {
+                const titulo = filme.dataset.titulo;
+                const genero = filme.dataset.genero;
+                const correspondeTitulo = titulo.includes(termo);
+                const correspondeGenero =
+                    generoAtual === "todos" || genero === generoAtual;
+
+                const mostrar = correspondeTitulo && correspondeGenero;
+
+                filme.hidden = !mostrar;
+
+                if (mostrar) {
+                    quantidade++;
+                }
+            });
+
+            contador.textContent =
+                quantidade + (quantidade === 1
+                    ? " filme encontrado."
+                    : " filmes encontrados.");
+
+            semResultados.hidden = quantidade !== 0;
+        }
+
+        pesquisa.addEventListener("input", filtrarFilmes);
+
+        filtros.forEach((botao) => {
+            botao.addEventListener("click", () => {
+                filtros.forEach((filtro) =>
+                    filtro.classList.remove("ativo")
+                );
+
+                botao.classList.add("ativo");
+                generoAtual = botao.dataset.genero;
+                filtrarFilmes();
+            });
+        });
+
+        filtrarFilmes();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CinePlay | Avaliações</title>
+
+    <link rel="stylesheet" href="../../estilos/avaliacoes.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <a href="/" class="logo">CINEPLAY</a>
+
+        <nav class="menu">
+            <a href="/">Início</a>
+            <a href="/filmes">Filmes e Séries</a>
+            <a href="/avaliacoes" class="ativo">Avaliações</a>
+            <a href="/sobre">Sobre nós</a>
+        </nav>
+    </header>
+
+    <!-- BANNER -->
+    <section class="banner">
+        <div class="banner-conteudo">
+            <span class="etiqueta">A COMUNIDADE CINEPLAY</span>
+
+            <h1>Qual é a sua opinião?</h1>
+
+            <p>
+                Avalie os filmes que você assistiu, compartilhe
+                suas experiências e descubra o que outras pessoas
+                estão achando das suas produções favoritas.
+            </p>
+
+            <a href="#formulario" class="botao botao-vermelho">
+                Escrever avaliação
+            </a>
+        </div>
+    </section>
+
+    <main class="conteudo">
+
+        <!-- RESUMO -->
+        <section class="resumo">
+            <div class="resumo-item">
+                <span class="resumo-icone">★</span>
+                <h2>Suas opiniões importam</h2>
+                <p>Ajude outras pessoas a escolherem filmes.</p>
+            </div>
+
+            <div class="resumo-item">
+                <span class="resumo-icone">💬</span>
+                <h2>Compartilhe experiências</h2>
+                <p>Conte o que achou da história e dos personagens.</p>
+            </div>
+
+            <div class="resumo-item">
+                <span class="resumo-icone">🎬</span>
+                <h2>Descubra novos filmes</h2>
+                <p>Conheça opiniões diferentes sobre o cinema.</p>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO -->
+        <section class="secao" id="formulario">
+            <div class="titulo-secao">
+                <h2>✍️ Escreva sua avaliação</h2>
+                <p>Conte para a comunidade o que você achou.</p>
+            </div>
+
+            <form id="formAvaliacao" class="formulario">
+
+                <div class="campo">
+                    <label for="nome">Seu nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        maxlength="50"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="filme">Filme avaliado</label>
+
+                    <select id="filme" name="filme" required>
+                        <option value="">Escolha um filme</option>
+                        <option value="Interestelar">Interestelar</option>
+                        <option value="A Origem">A Origem</option>
+                        <option value="Batman">Batman</option>
+                        <option value="Jurassic World">Jurassic World</option>
+                        <option value="À Procura da Felicidade">
+                            À Procura da Felicidade
+                        </option>
+                        <option value="Divertida Mente">Divertida Mente</option>
+                        <option value="Outro">Outro filme</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Qual nota você dá ao filme?</label>
+
+                    <div class="selecao-estrelas"
+                        role="group"
+                        aria-label="Escolha uma nota de 1 a 5 estrelas">
+
+                        <input type="radio" name="nota"
+                            id="estrela1" value="1" required>
+                        <label for="estrela1" title="1 estrela">★</label>
+
+                        <input type="radio" name="nota"
+                            id="estrela2" value="2">
+                        <label for="estrela2" title="2 estrelas">★</label>
+
+                        <input type="radio" name="nota"
+                            id="estrela3" value="3">
+                        <label for="estrela3" title="3 estrelas">★</label>
+
+                        <input type="radio" name="nota"
+                            id="estrela4" value="4">
+                        <label for="estrela4" title="4 estrelas">★</label>
+
+                        <input type="radio" name="nota"
+                            id="estrela5" value="5">
+                        <label for="estrela5" title="5 estrelas">★</label>
+                    </div>
+
+                    <p class="ajuda">De 1 estrela (ruim) a 5 estrelas (excelente).</p>
+                </div>
+
+                <div class="campo">
+                    <label for="opiniao">Sua opinião</label>
+
+                    <textarea
+                        id="opiniao"
+                        name="opiniao"
+                        rows="5"
+                        minlength="5"
+                        maxlength="1000"
+                        placeholder="O que você achou do filme? Conte sobre a história, os personagens e o que mais gostou..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="botao botao-vermelho">
+                    Publicar avaliação
+                </button>
+
+                <p id="mensagem" class="mensagem" role="status"></p>
+            </form>
+        </section>
+
+        <!-- AVALIAÇÕES DA COMUNIDADE -->
+        <section class="secao">
+            <div class="titulo-secao">
+                <h2>💬 Opiniões da comunidade</h2>
+                <p>Veja o que as pessoas estão dizendo sobre os filmes.</p>
+            </div>
+
+            <div class="lista-avaliacoes" id="listaAvaliacoes">
+
+                <article class="avaliacao">
+                    <div class="avaliacao-topo">
+                        <div class="avatar">M</div>
+
+                        <div class="usuario">
+                            <h3>Mariana</h3>
+                            <span>Filme: Interestelar</span>
+                        </div>
+
+                        <span class="nota-comentario">★★★★★</span>
+                    </div>
+
+                    <p class="texto-opiniao">
+                        Um filme incrível! A história é emocionante,
+                        os efeitos visuais são impressionantes e o final
+                        faz a gente pensar bastante.
+                    </p>
+
+                    <span class="aviso-exemplo">Comentário demonstrativo</span>
+                </article>
+
+                <article class="avaliacao">
+                    <div class="avaliacao-topo">
+                        <div class="avatar">L</div>
+
+                        <div class="usuario">
+                            <h3>Lucas</h3>
+                            <span>Filme: A Origem</span>
+                        </div>
+
+                        <span class="nota-comentario">★★★★☆</span>
+                    </div>
+
+                    <p class="texto-opiniao">
+                        Gostei muito da ideia do filme. A história
+                        é cheia de mistérios e prende a atenção
+                        até o final.
+                    </p>
+
+                    <span class="aviso-exemplo">Comentário demonstrativo</span>
+                </article>
+
+                <article class="avaliacao">
+                    <div class="avaliacao-topo">
+                        <div class="avatar">A</div>
+
+                        <div class="usuario">
+                            <h3>Ana</h3>
+                            <span>Filme: Divertida Mente</span>
+                        </div>
+
+                        <span class="nota-comentario">★★★★★</span>
+                    </div>
+
+                    <p class="texto-opiniao">
+                        É uma animação divertida e emocionante.
+                        Gostei da maneira como o filme apresenta
+                        os sentimentos e as emoções.
+                    </p>
+
+                    <span class="aviso-exemplo">Comentário demonstrativo</span>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <p>© 2026 CinePlay — Projeto acadêmico.</p>
+        <p>Descubra. Assista. Avalie. Compartilhe.</p>
+
+        <div class="links-rodape">
+            <a href="/">Início</a>
+            <a href="/filmes">Filmes</a>
+            <a href="/avaliacoes">Avaliações</a>
+            <a href="/sobre">Sobre nós</a>
+        </div>
+    </footer>
+
+    <!-- FUNCIONALIDADE DO FORMULÁRIO -->
+    <script>
+        const formulario = document.getElementById("formAvaliacao");
+        const lista = document.getElementById("listaAvaliacoes");
+        const mensagem = document.getElementById("mensagem");
+
+        // Permite selecionar e visualizar a nota em estrelas.
+        const estrelas = document.querySelectorAll(
+            ".selecao-estrelas label"
+        );
+
+        estrelas.forEach((estrela) => {
+            estrela.addEventListener("mouseenter", () => {
+                const nota = Number(estrela.htmlFor.replace("estrela", ""));
+
+                estrelas.forEach((item, indice) => {
+                    item.classList.toggle("realce", indice < nota);
+                });
+            });
+        });
+
+        document.querySelector(".selecao-estrelas")
+            .addEventListener("mouseleave", () => {
+                estrelas.forEach((item) => item.classList.remove("realce"));
+            });
+
+        // Adiciona a avaliação à lista durante esta sessão da página.
+        formulario.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+
+            const nome = document.getElementById("nome").value.trim();
+            const filme = document.getElementById("filme").value;
+            const opiniao = document.getElementById("opiniao").value.trim();
+            const notaSelecionada = document.querySelector(
+                'input[name="nota"]:checked'
+            );
+
+            if (!notaSelecionada) {
+                mensagem.textContent = "Selecione uma nota em estrelas.";
+                return;
+            }
+
+            if (!nome || !filme || opiniao.length < 5) {
+                mensagem.textContent =
+                    "Preencha todos os campos corretamente.";
+                return;
+            }
+
+            const nota = Number(notaSelecionada.value);
+
+            const cartao = document.createElement("article");
+            cartao.className = "avaliacao";
+
+            const topo = document.createElement("div");
+            topo.className = "avaliacao-topo";
+
+            const avatar = document.createElement("div");
+            avatar.className = "avatar";
+            avatar.textContent = nome.charAt(0).toUpperCase();
+
+            const usuario = document.createElement("div");
+            usuario.className = "usuario";
+
+            const nomeUsuario = document.createElement("h3");
+            nomeUsuario.textContent = nome;
+
+            const tituloFilme = document.createElement("span");
+            tituloFilme.textContent = "Filme: " + filme;
+
+            usuario.append(nomeUsuario, tituloFilme);
+
+            const estrelasNota = document.createElement("span");
+            estrelasNota.className = "nota-comentario";
+            estrelasNota.textContent =
+                "★".repeat(nota) + "☆".repeat(5 - nota);
+
+            topo.append(avatar, usuario, estrelasNota);
+
+            const texto = document.createElement("p");
+            texto.className = "texto-opiniao";
+            texto.textContent = opiniao;
+
+            const aviso = document.createElement("span");
+            aviso.className = "aviso-exemplo";
+            aviso.textContent = "Avaliação desta sessão";
+
+            cartao.append(topo, texto, aviso);
+
+            // Coloca a avaliação mais recente no início.
+            lista.prepend(cartao);
+
+            formulario.reset();
+
+            mensagem.textContent =
+                "Avaliação adicionada à página com sucesso!";
+        });
+    </script>
+
+</body>
+</html>

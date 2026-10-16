@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CinePlay | Sobre</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">CINE<span>PLAY</span></a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="filmes.html">Filmes e séries</a>
+      <a href="avaliacoes.html">Avaliações</a>
+      <a class="active" href="sobre.html">Sobre</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <span class="tag">NOSSA HISTÓRIA</span>
+      <h1>O cinema fica melhor quando é compartilhado.</h1>
+      <p>
+        O CinePlay nasceu para aproximar pessoas por meio de histórias,
+        opiniões e experiências cinematográficas.
+      </p>
+    </section>
+
+    <section class="section about-content">
+      <div class="about-block">
+        <span class="about-icon">🎬</span>
+        <h2>Quem somos?</h2>
+        <p>
+          O CinePlay é um projeto de site voltado para o universo dos
+          filmes e do entretenimento. A plataforma permite explorar
+          títulos, conhecer suas histórias e descobrir a opinião de
+          outros espectadores.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <span class="about-icon">🎯</span>
+        <h2>Nossa missão</h2>
+        <p>
+          Facilitar a descoberta de filmes e incentivar a troca de
+          experiências entre pessoas que gostam de cinema, oferecendo
+          um espaço para notas, comentários e recomendações.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <span class="about-icon">💬</span>
+        <h2>Nosso diferencial</h2>
+        <p>
+          Além de consultar um catálogo, os visitantes podem compartilhar
+          suas próprias avaliações. Assim, cada pessoa contribui para
+          ajudar outras a escolher o que assistir.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contato">
+      <div class="contact-intro">
+        <span class="tag">FALE CONOSCO</span>
+        <h2>Tem uma ideia ou sugestão?</h2>
+        <p>
+          Envie uma mensagem. Sua opinião pode ajudar a melhorar
+          a experiência do CinePlay.
+        </p>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <label for="contactName">Nome</label>
+        <input id="contactName" type="text" maxlength="80"
+               placeholder="Seu nome" required>
+
+        <label for="contactEmail">E-mail</label>
+        <input id="contactEmail" type="email"
+               placeholder="seuemail@exemplo.com" required>
+
+        <label for="contactMessage">Mensagem</label>
+        <textarea id="contactMessage" rows="5" maxlength="1500"
+                  placeholder="Escreva sua mensagem..." required></textarea>
+
+        <button class="btn btn-red btn-full" type="submit">
+          Enviar mensagem
+        </button>
+
+        <p id="contactFeedback" class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo" href="index.html">CINE<span>PLAY</span></a>
+    <p>CinePlay — descubra histórias, compartilhe opiniões.</p>
+    <p>Projeto escolar de desenvolvimento web.</p>
+  </footer>
+
+  <script>
+    const contactForm = document.getElementById("contactForm");
+    const contactFeedback = document.getElementById("contactFeedback");
+
+    contactForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      contactFeedback.textContent =
+        "Demonstração concluída! O formulário ainda não está conectado a um servidor.";
+
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CinePlay | Avaliações</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">CINE<span>PLAY</span></a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="filmes.html">Filmes e séries</a>
+      <a class="active" href="avaliacoes.html">Avaliações</a>
+      <a href="sobre.html">Sobre</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="page-heading">
+      <span class="tag">COMUNIDADE CINEPLAY</span>
+      <h1>Sua opinião tem valor.</h1>
+      <p>Avalie os filmes que assistiu e descubra o que outras pessoas acharam.</p>
+    </section>
+
+    <section class="review-layout">
+      <div class="review-form-card">
+        <h2>Escreva sua avaliação</h2>
+        <p class="muted">Conte para outras pessoas o que achou do filme.</p>
+
+        <form id="reviewForm">
+          <label for="movieSelect">Filme</label>
+          <select id="movieSelect" required>
+            <option value="">Escolha um filme</option>
+            <option>Oppenheimer</option>
+            <option>Um Sonho de Liberdade</option>
+            <option>Parasita</option>
+            <option>Coringa</option>
+            <option>Your Name</option>
+            <option>Interestelar</option>
+            <option>Batman: O Cavaleiro das Trevas</option>
+            <option>A Origem</option>
+          </select>
+
+          <label for="userName">Seu nome</label>
+          <input id="userName" type="text" maxlength="40"
+                 placeholder="Como podemos chamar você?" required>
+
+          <label>Sua nota</label>
+          <div class="star-picker" id="starPicker" aria-label="Escolha uma nota de uma a cinco estrelas">
+            <button type="button" class="star-button" data-rating="1" aria-label="1 estrela">★</button>
+            <button type="button" class="star-button" data-rating="2" aria-label="2 estrelas">★</button>
+            <button type="button" class="star-button" data-rating="3" aria-label="3 estrelas">★</button>
+            <button type="button" class="star-button" data-rating="4" aria-label="4 estrelas">★</button>
+            <button type="button" class="star-button" data-rating="5" aria-label="5 estrelas">★</button>
+            <span id="ratingLabel">Selecione de 1 a 5</span>
+          </div>
+
+          <input id="ratingValue" type="hidden" value="">
+
+          <label for="reviewText">Sua opinião</label>
+          <textarea id="reviewText" rows="5" maxlength="1000"
+                    placeholder="O que você gostou? Recomendaria esse filme? Conte aqui..."
+                    required></textarea>
+
+          <button type="submit" class="btn btn-red btn-full">
+            Publicar avaliação
+          </button>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+      </div>
+
+      <aside class="community-card">
+        <span class="community-icon">★</span>
+        <h2>Todo filme tem uma história. E cada pessoa tem uma opinião.</h2>
+        <p>
+          Compartilhe sua experiência, descubra novas perspectivas
+          e ajude outras pessoas a escolher o próximo filme.
+        </p>
+        <div class="community-stat">
+          <strong id="reviewCount">0</strong>
+          <span>avaliações publicadas neste navegador</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section reviews-section">
+      <div class="section-heading">
+        <div>
+          <h2>Opiniões da comunidade</h2>
+          <p>Veja as avaliações compartilhadas neste navegador.</p>
+        </div>
+        <select id="reviewFilter" aria-label="Filtrar avaliações">
+          <option value="todos">Todos os filmes</option>
+          <option>Oppenheimer</option>
+          <option>Um Sonho de Liberdade</option>
+          <option>Parasita</option>
+          <option>Coringa</option>
+          <option>Your Name</option>
+          <option>Interestelar</option>
+          <option>Batman: O Cavaleiro das Trevas</option>
+          <option>A Origem</option>
+        </select>
+      </div>
+
+      <div id="averageGrid" class="average-grid"></div>
+      <div id="reviewsList" class="reviews-list"></div>
+      <p id="noReviews" class="empty-message">
+        Ainda não há avaliações. Seja a primeira pessoa a compartilhar sua opinião!
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo" href="index.html">CINE<span>PLAY</span></a>
+    <p>Respeite as opiniões. Compartilhe sua paixão pelo cinema.</p>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = "cineplay-reviews-v1";
+    const form = document.getElementById("reviewForm");
+    const movieSelect = document.getElementById("movieSelect");
+    const userName = document.getElementById("userName");
+    const reviewText = document.getElementById("reviewText");
+    const ratingValue = document.getElementById("ratingValue");
+    const ratingLabel = document.getElementById("ratingLabel");
+    const formMessage = document.getElementById("formMessage");
+    const reviewFilter = document.getElementById("reviewFilter");
+    const reviewsList = document.getElementById("reviewsList");
+    const averageGrid = document.getElementById("averageGrid");
+    const noReviews = document.getElementById("noReviews");
+    const reviewCount = document.getElementById("reviewCount");
+    const starButtons = document.querySelectorAll(".star-button");
+
+    let selectedRating = 0;
+
+    function getReviews() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveReviews(reviews) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+    }
+
+    function selectRating(value) {
+      selectedRating = value;
+      ratingValue.value = value;
+      ratingLabel.textContent = value + " de 5 estrelas";
+
+      starButtons.forEach(button => {
+        const active = Number(button.dataset.rating) <= value;
+        button.classList.toggle("selected", active);
+        button.setAttribute("aria-pressed", String(
+          Number(button.dataset.rating) === value
+        ));
+      });
+    }
+
+    starButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        selectRating(Number(button.dataset.rating));
+      });
+    });
+
+    function renderReviews() {
+      const reviews = getReviews();
+      const filter = reviewFilter.value;
+
+      reviewCount.textContent = reviews.length;
+
+      const filtered = filter === "todos"
+        ? reviews
+        : reviews.filter(review => review.movie === filter);
+
+      reviewsList.replaceChildren();
+      averageGrid.replaceChildren();
+
+      const movieNames = [...new Set(reviews.map(review => review.movie))];
+
+      movieNames.forEach(movie => {
+        const movieReviews = reviews.filter(review => review.movie === movie);
+        const average = movieReviews.reduce((sum, review) => sum + review.rating, 0)
+          / movieReviews.length;
+
+        const card = document.createElement("div");
+        card.className = "average-card";
+
+        const title = document.createElement("h3");
+        title.textContent = movie;
+
+        const score = document.createElement("strong");
+        score.textContent = "★ " + average.toFixed(1).replace(".", ",");
+
+        const count = document.createElement("p");
+        count.textContent = movieReviews.length +
+          (movieReviews.length === 1 ? " avaliação" : " avaliações");
+
+        card.append(title, score, count);
+        averageGrid.appendChild(card);
+      });
+
+      filtered.forEach(review => {
+        const card = document.createElement("article");
+        card.className = "review-card";
+
+        const top = document.createElement("div");
+        top.className = "review-top";
+
+        const title = document.createElement("h3");
+        title.textContent = review.movie;
+
+        const stars = document.createElement("span");
+        stars.className = "review-stars";
+        stars.textContent = "★".repeat(review.rating) +
+          "☆".repeat(5 - review.rating);
+
+        top.append(title, stars);
+
+        const author = document.createElement("p");
+        author.className = "review-author";
+        author.textContent = "Por " + review.name;
+
+        const comment = document.createElement("p");
+        comment.className = "review-comment";
+        comment.textContent = review.comment;
+
+        const date = document.createElement("small");
+        date.className = "muted";
+        date.textContent = review.date;
+
+        card.append(top, author, comment, date);
+        reviewsList.appendChild(card);
+      });
+
+      noReviews.hidden = filtered.length > 0;
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const movie = movieSelect.value;
+      const name = userName.value.trim();
+      const comment = reviewText.value.trim();
+
+      if (!movie || !name || !comment || selectedRating < 1) {
+        formMessage.textContent =
+          "Preencha todos os campos e selecione uma nota.";
+        return;
+      }
+
+      const reviews = getReviews();
+
+      reviews.unshift({
+        movie,
+        name,
+        rating: selectedRating,
+        comment,
+        date: new Date().toLocaleDateString("pt-BR")
+      });
+
+      try {
+        saveReviews(reviews);
+      } catch {
+        formMessage.textContent =
+          "Não foi possível salvar. Verifique o armazenamento do navegador.";
+        return;
+      }
+
+      form.reset();
+      selectedRating = 0;
+      starButtons.forEach(button => {
+        button.classList.remove("selected");
+        button.setAttribute("aria-pressed", "false");
+      });
+      ratingLabel.textContent = "Selecione de 1 a 5";
+
+      formMessage.textContent = "Avaliação adicionada com sucesso!";
+      reviewFilter.value = "todos";
+      renderReviews();
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedMovie = params.get("filme");
+
+    if (requestedMovie) {
+      const option = [...movieSelect.options].find(
+        item => item.value === requestedMovie || item.text === requestedMovie
+      );
+
+      if (option) movieSelect.value = option.value;
+    }
+
+    reviewFilter.addEventListener("change", renderReviews);
+
+    renderReviews();
+  </script>
+</body>
+</html>
